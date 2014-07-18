@@ -1,0 +1,7 @@
+name = Roblib Askus
+configure = admin/roblib_askus/configure
+description = A drupal module to wrap the library ask us functionality
+package = Roblib
+version = 7.x-dev
+core = 7.x
+stylesheets[all][] = css/roblib_askus.base.css

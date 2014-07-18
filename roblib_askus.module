@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Implementation of Roblib search for searching several targets.
+ */
+
+
+/**
+ * Implements hook_permission().
+ */
+function roblib_askus_permission() {
+  return array(
+    'view roblib askus' => array(
+      'title' => t('View roblib askus block'),
+      'description' => t('view the roblib askus block'),
+    ),
+  );
+}
+
+
+function roblib_askus_block_info() {
+
+  $blocks['roblib_askus_view'] = array(
+    'info' => t('Roblib Askus block'),
+    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  return $blocks;
+}
+
+function roblib_askus_block_view($delta = '') {
+  switch ($delta) {
+    case 'roblib_askus_view':
+      $block['subject'] = t('Askus');
+      $block['content'] = theme('roblib_askus', array('view' => NULL));
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function roblib_askus_theme() {
+  $path = drupal_get_path('module', 'roblib_askus');
+  $file = 'theme.inc';
+
+  return array(
+    'roblib_askus' => array(
+      'path' => $path . '/theme',
+      //'file' => $file,
+      'template' => 'roblib-askus',
+      'variables' => array('view' => NULL),
+    )
+  );
+}
+
